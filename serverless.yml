@@ -1,0 +1,18 @@
+service: testproj
+app: role-test-app
+org: fernando
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  getAssessmentRequest:
+    handler: assessmentrequests/get.get
+    timeout: 30
+    events:
+      - http:
+          path: assessmentrequest/{requestKey}
+          method: get
+          cors: true
+
